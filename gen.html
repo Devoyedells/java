@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Calculator</title>
+    <link rel="stylesheet" href="./gen.css">
+</head>
+<body>
+    
+    <div class="calculator">
+        <h3>Arithmetic Calculator</h3>
+        <input type="number" placeholder="First value" id="val1" class="input-field">
+        <input type="number" placeholder="Second value" id="val2" class="input-field">
+        <label for="operations">Choose an arithmetic operation:</label>
+        <select id="operations" name="operations">
+            <option value="add">Addition (+)</option>
+            <option value="subtract">Subtraction (-)</option>
+            <option value="multiply">Multiplication (*)</option>
+            <option value="divide">Division (/)</option>
+            <option value="modules">modules (%)</option>
+            <option value="exponentaition">Expo (**)</option>
+        </select>
+        <button class="calc-button" onclick="calculate()">Calculate</button>
+        <h4 id="myScreen" class="result-screen">Your results display here</h4>
+    </div>
+    
+    <script>
+        function calculate() {
+            let input1 = Number(document.getElementById('val1').value);
+            let input2 = Number(document.getElementById('val2').value);
+            let operation = document.getElementById('operations').value;
+            let result;
+
+            if (operation === 'add') {
+                result = input1 + input2;
+            } else if (operation === 'subtract') {
+                result = input1 - input2;
+            }else if (operation === 'modules'){
+                result = input1 % input2
+            }else if (operation === 'exponentaition'){
+                result = input1 ** input2
+            } else if (operation === 'multiply') {
+                result = input1 * input2;
+            } else if (operation === 'divide') {
+                if (input2 !== 0) {
+                    result = input1 / input2;
+                } else {
+                    result = "Cannot divide by zero";
+                }
+            } else {
+                result = "Invalid operation";
+            }
+
+            document.getElementById('myScreen').innerHTML = 'Your answer is: ' + result;
+        }
+    </script>
+</body>
+</html>
